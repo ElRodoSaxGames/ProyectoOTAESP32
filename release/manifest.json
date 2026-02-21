@@ -1,13 +1,13 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     {
       "path": "main.py",
       "url": "https://raw.githubusercontent.com/ElRodoSaxGames/ProyectoOTAESP32/main/release/files/main.py"
     },
     {
-      "path": "app/iot.py",
-      "url": "https://raw.githubusercontent.com/ElRodoSaxGames/ProyectoOTAESP32/main/release/files/app/iot.py"
+      "path": "app/blink.py",
+      "url": "https://raw.githubusercontent.com/ElRodoSaxGames/ProyectoOTAESP32/main/release/files/app/blink.py"
     }
   ]
 }
