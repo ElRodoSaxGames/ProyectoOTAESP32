@@ -23,9 +23,38 @@
 # from app.iot import loop
 # loop()
 
-import ujson
+# import ujson
 
-VERSION = "1.0.1"  # súbelo cada vez que cambies release
+# VERSION = "1.0.1"  # súbelo cada vez que cambies release
+
+# def commit_ok(bank, version):
+#     with open("state.json", "r") as f:
+#         st = ujson.load(f)
+
+#     if st.get("pending_bank") == bank and st.get("pending_version") == version:
+#         st["active_bank"] = bank
+#         st["active_version"] = version
+#         st["pending_bank"] = None
+#         st["pending_version"] = None
+#         st["boot_try"] = 0
+#         with open("state.json", "w") as f:
+#             ujson.dump(st, f)
+
+# # Si tu app ya arrancó, hacemos commit
+# commit_ok(globals().get("BANK", "?"), VERSION)
+
+# from app.blink import run
+# run()
+
+import sys, ujson
+
+VERSION = "1.0.2"  # sube versión
+
+# Asegura que el directorio del banco esté en el import path
+BANK = globals().get("BANK", "A")
+bank_root = "bank_" + BANK
+if bank_root not in sys.path:
+    sys.path.insert(0, bank_root)
 
 def commit_ok(bank, version):
     with open("state.json", "r") as f:
@@ -40,8 +69,7 @@ def commit_ok(bank, version):
         with open("state.json", "w") as f:
             ujson.dump(st, f)
 
-# Si tu app ya arrancó, hacemos commit
-commit_ok(globals().get("BANK", "?"), VERSION)
+commit_ok(BANK, VERSION)
 
 from app.blink import run
 run()
